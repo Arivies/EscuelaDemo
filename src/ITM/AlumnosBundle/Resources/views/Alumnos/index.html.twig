@@ -1,36 +1,34 @@
 {% extends '::front.html.twig' %}
 
-{% block body %}
-    <h1>Alumnos list</h1>
-
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nocontrol</th>
-                <th>Nombre</th>
-                <th>Apellido_paterno</th>
-                <th>Apellido_materno</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+{% block content %}
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nocontrol</th>
+            <th>Nombre</th>
+            <th>Apellido_paterno</th>
+            <th>Apellido_materno</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
         {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('alumnos_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.nocontrol }}</td>
-                <td>{{ entity.nombre }}</td>
-                <td>{{ entity.apellidopaterno }}</td>
-                <td>{{ entity.apellidomaterno }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('alumnos_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
+        <tr>
+            <td><a href="{{ path('alumnos_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.nocontrol }}</td>
+            <td>{{ entity.nombre }}</td>
+            <td>{{ entity.apellidopaterno }}</td>
+            <td>{{ entity.apellidomaterno }}</td>
+            <td>
+            <ul>
+                <li>
+                    <a href="{{ path('alumnos_show', { 'id': entity.id }) }}">show</a>
+                </li>
+            </ul>
+            </td>
+        </tr>
         {% endfor %}
-        </tbody>
-    </table>
+    </tbody>
+</table>
 {% endblock %}
