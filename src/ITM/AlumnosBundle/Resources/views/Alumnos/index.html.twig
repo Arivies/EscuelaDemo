@@ -4,11 +4,10 @@
 <table class="records_list">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Nocontrol</th>
-            <th>Nombre</th>
-            <th>Apellido_paterno</th>
-            <th>Apellido_materno</th>
+            <th>ID</th>
+            <th>NO. CONTROL</th>
+            <th>NOMBRE</th>
+            <th>APELLIDOS</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -18,8 +17,7 @@
             <td><a href="{{ path('alumnos_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.nocontrol }}</td>
             <td>{{ entity.nombre }}</td>
-            <td>{{ entity.apellidopaterno }}</td>
-            <td>{{ entity.apellidomaterno }}</td>
+            <td>{{ entity.apellidopaterno ~ " " ~ entity.apellidomaterno }}</td>
             <td>
             <ul>
                 <li>
@@ -31,4 +29,5 @@
         {% endfor %}
     </tbody>
 </table>
+{{ knp_pagination_render(entities) }}
 {% endblock %}
