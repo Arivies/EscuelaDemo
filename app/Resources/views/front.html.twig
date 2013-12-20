@@ -4,7 +4,45 @@
 	<link rel="stylesheet" href="{{ asset('bundles/alumnos/css/foundation.css') }}" />
 {% endblock %}
 
-{% block body %}{% endblock %}
+{% block body %}
+<div class="row">
+	<header class="large-12 columns">
+		<div class="panel">
+    		<h1>Encabezado</h1>
+    	</div>
+    </header>
+
+	<div class="large-12 columns">
+		<div class="row">
+		    <div class="large-3 columns">
+			    <ul class="breadcrumbs">
+				  <li><a href="{{ path('alumnos') }}">Inicio</a></li>
+				  <li>Alumnos</li>
+				</ul>
+		    </div>
+		</div>
+	
+		<div class="row">
+			<nav class="large-3 columns">
+			   	<ul class="side-nav">
+					<li><a href="{{ path('alumnos') }}">Alumnos</a></li>
+					<li><a href="{{ path('carreras') }}">Carreras</a></li>
+				</ul>
+		    </nav>
+		    <article class="large-9 columns">
+		    	{% block content %}
+		    	{% endblock %}
+		    </article>	
+		</div>
+	</div>
+
+	<footer class="large-12 columns">
+		<div class="panel">
+    		<h1>Pie de pagina</h1>
+    	</div>
+    </footer>
+</div>
+{% endblock %}
 
 {% block javascripts %}
 	<script src="{{ asset('bundles/alumnos/js/modernizr.js') }}"></script>
