@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new ITM\AlumnosBundle\AlumnosBundle(),
             new ITM\CarrerasBundle\CarrerasBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
