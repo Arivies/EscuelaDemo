@@ -1,0 +1,8 @@
+carreras:
+    resource: "@CarrerasBundle/Resources/config/routing.yml"
+    prefix:   /
+
+alumnos:
+    resource: "@AlumnosBundle/Resources/config/routing.yml"
+    prefix:   /
+

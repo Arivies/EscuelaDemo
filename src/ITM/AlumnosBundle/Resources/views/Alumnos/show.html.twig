@@ -1,0 +1,38 @@
+{% extends '::front.html.twig' %}
+
+{% block body %}
+    <h1>Alumnos</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nocontrol</th>
+                <td>{{ entity.nocontrol }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Apellido_paterno</th>
+                <td>{{ entity.apellidopaterno }}</td>
+            </tr>
+            <tr>
+                <th>Apellido_materno</th>
+                <td>{{ entity.apellidomaterno }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('alumnos') }}">
+                Back to the list
+            </a>
+        </li>
+    </ul>
+{% endblock %}

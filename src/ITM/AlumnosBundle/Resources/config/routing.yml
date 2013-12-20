@@ -1,0 +1,11 @@
+alumnos:
+    pattern:  /alumnos
+    defaults: { _controller: AlumnosBundle:Alumnos:index }
+
+_alumnos:
+    pattern: /alumnos/
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: alumnos }
+
+alumnos_show:
+    pattern:  /alumnos/show/{id}
+    defaults: { _controller: AlumnosBundle:Alumnos:show }

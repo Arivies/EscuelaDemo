@@ -1,0 +1,11 @@
+carreras:
+    pattern:  /carreras
+    defaults: { _controller: CarrerasBundle:Carreras:index }
+
+_carreras:
+    pattern: /carreras/
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: carreras}
+
+carreras_show:
+    pattern:  /carreras/show/{id}
+    defaults: { _controller: CarrerasBundle:Carreras:show }

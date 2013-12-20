@@ -1,0 +1,7 @@
+parameters:
+#    carreras.example.class: ITM\CarrerasBundle\Example
+
+services:
+#    carreras.example:
+#        class: %carreras.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
