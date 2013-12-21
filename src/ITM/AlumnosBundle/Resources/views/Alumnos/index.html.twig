@@ -1,14 +1,14 @@
 {% extends '::front.html.twig' %}
 
 {% block content %}
-<table class="records_list">
+<table>
     <thead>
         <tr>
-            <th>ID</th>
-            <th>NO. CONTROL</th>
-            <th>NOMBRE</th>
-            <th>APELLIDOS</th>
-            <th>Actions</th>
+            <th width="30">ID</th>
+            <th width="120">NO. CONTROL</th>
+            <th width="220">NOMBRE</th>
+            <th width="210">APELLIDOS</th>
+            <th width="120">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -19,11 +19,8 @@
             <td>{{ entity.nombre }}</td>
             <td>{{ entity.apellidopaterno ~ " " ~ entity.apellidomaterno }}</td>
             <td>
-            <ul>
-                <li>
-                    <a href="{{ path('alumnos_show', { 'id': entity.id }) }}">show</a>
-                </li>
-            </ul>
+                <a href="{{ path('alumnos_show', { 'id': entity.id }) }}">show</a>
+                <a href="#">eliminar</a>
             </td>
         </tr>
         {% endfor %}

@@ -4,9 +4,9 @@
 <table>
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Actions</th>
+            <th width="30">Id</th>
+            <th width="560">Nombre</th>
+            <th width="120">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -15,11 +15,8 @@
             <td><a href="{{ path('carreras_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.nombre }}</td>
             <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('carreras_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                </ul>
+                <a href="{{ path('carreras_show', { 'id': entity.id }) }}">show</a>
+                <a href="#">eliminar</a>
             </td>
         </tr>
         {% endfor %}
