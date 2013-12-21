@@ -4,11 +4,12 @@
 <table>
     <thead>
         <tr>
-            <th width="30">ID</th>
-            <th width="120">NO. CONTROL</th>
-            <th width="220">NOMBRE</th>
-            <th width="210">APELLIDOS</th>
-            <th width="120">Actions</th>
+            <th>ID</th>
+            <th>NO. CONTROL</th>
+            <th>NOMBRE</th>
+            <th>APELLIDOS</th>
+            <th>CARRERA</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -18,6 +19,7 @@
             <td>{{ entity.nocontrol }}</td>
             <td>{{ entity.nombre }}</td>
             <td>{{ entity.apellidopaterno ~ " " ~ entity.apellidomaterno }}</td>
+            <td>{{ entity.carrera }}</td>
             <td>
                 <a href="{{ path('alumnos_show', { 'id': entity.id }) }}">show</a>
                 <a href="#">eliminar</a>
