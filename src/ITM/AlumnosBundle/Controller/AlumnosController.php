@@ -28,12 +28,12 @@ class AlumnosController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('AlumnosBundle:Alumnos')->findAll();
+        $entities = $em->getRepository('AlumnosBundle:Alumnos')->findAlumnos();
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate($entities, $this->get('request')->query->get('page',1), 5);
 
-        return array('entities' => $pagination);
+        return $this->render('AlumnosBundle:Alumnos:index.html.twig', array('entities' => $pagination));
     }
 
     /**
