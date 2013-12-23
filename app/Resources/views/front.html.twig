@@ -2,39 +2,70 @@
 
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('bundles/alumnos/css/foundation.css') }}" />
+	<link rel="stylesheet" href="{{ asset('bundles/alumnos/css/master.css') }}" />
 {% endblock %}
 
 {% block body %}
 <div class="row">
 	<header class="large-12 columns">
-		<div class="panel">
-    		<h1>Encabezado</h1>
-    	</div>
-    </header>
+		<nav class="top-bar" data-topbar>
+		  <ul class="title-area">
+		    <li class="name">
+		      <h1><a href="#">Symfony2</a></h1>
+		    </li>
+		    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+		  </ul>
 
-	<div class="large-12 columns">
+		  <section class="top-bar-section">
+		    <!-- Right Nav Section -->
+		    <ul class="right">
+		      <li><a href="{{ path('portada') }}">Inicio</a></li>
+                    <li>
+                      <a href="{{ path('alumnos') }}">Alumnos</a>
+                    </li>
+                    <li>
+                      <a href="{{ path('carreras') }}">Carreras</a>
+                    </li>
+		    </ul>
+		  </section>
+		</nav>
+    </header>
+	
+	<!-- Main Page Content and Sidebar -->
+	<div id="contenido" class="large-12 columns">
 		<div class="row">
 			<nav class="large-3 columns">
-			   	<ul class="side-nav">
-					<li><a href="{{ path('alumnos') }}">Alumnos</a></li>
-					<li><a href="{{ path('carreras') }}">Carreras</a></li>
-				</ul>
+			    {% block options %}
+			    {% endblock %}
 		    </nav>
-		    <article class="large-9 columns">
+		    <section class="large-9 columns">
 		    	{% block content %}
 		    	{% endblock %}
-		    </article>	
+		    </section>	
 		</div>
 	</div>
 
-	<footer class="large-12 columns">
-		<div class="panel">
-    		<h1>Pie de pagina</h1>
-    	</div>
-    </footer>
+	<!-- Footer -->
+    <footer class="row">
+		<div class="large-12 columns">
+	    <hr />
+	      <div class="row">
+	        <div class="large-6 columns">
+	          <p>© Instituto Tecnológico de Mexicali.</p>
+	        </div>
+	      	</div>
+		</div> 
+	</footer>
 </div>
 {% endblock %}
 
 {% block javascripts %}
+	<script src="{{ asset('bundles/alumnos/js/jquery.js') }}"></script>
 	<script src="{{ asset('bundles/alumnos/js/modernizr.js') }}"></script>
+	<script src="{{ asset('bundles/alumnos/js/foundation.min.js') }}"></script>
+  	<script src="{{ asset('bundles/alumnos/js/foundation/foundation.topbar.js') }}"></script>
+  
+  	<script>
+    	$(document).foundation();
+  	</script>
 {% endblock %}
