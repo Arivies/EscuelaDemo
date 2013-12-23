@@ -1,0 +1,14 @@
+#contenido {
+	margin-top: 25px;
+}
+
+.enlace a {
+ 	text-decoration: none;
+ 	color: #333333;
+}
+
+.enlace a:focus,
+.enlace a:hover {
+	text-decoration: none;
+	color: #333333;
+}
