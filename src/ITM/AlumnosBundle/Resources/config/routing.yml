@@ -1,3 +1,7 @@
+portada:
+    pattern:  /
+    defaults: { _controller: AlumnosBundle:Alumnos:portada }
+
 alumnos:
     pattern:  /alumnos
     defaults: { _controller: AlumnosBundle:Alumnos:index }
@@ -9,3 +13,7 @@ _alumnos:
 alumnos_show:
     pattern:  /alumnos/show/{id}
     defaults: { _controller: AlumnosBundle:Alumnos:show }
+
+alumnos_nuevo:
+    pattern:  /alumnos/nuevo/
+    defaults: { _controller: AlumnosBundle:Alumnos:nuevo }
