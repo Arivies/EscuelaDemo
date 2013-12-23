@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use ITM\CarrerasBundle\Entity\Carreras;
+use ITM\CarrerasBundle\Form\CarrerasType;
 
 /**
  * Carreras controller.
@@ -55,6 +56,29 @@ class CarrerasController extends Controller
 
         return array(
             'entity'      => $entity,
+        );
+    }
+
+    public function nuevoAction()
+    {
+        $peticion = $this->getRequest();
+
+        $carrera = new Carreras();
+        $formulario = $this->createForm(new CarrerasType(), $carrera);
+
+        if ($peticion->getMethod() == 'POST'){
+            $formulario->bind($peticion);
+
+            if($formulario->isValid()){
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($carrera);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('carreras'));
+            }
+        }
+        
+        return $this->render('CarrerasBundle:Carreras:nuevo.html.twig', array('formulario' => $formulario->createView())
         );
     }
 }

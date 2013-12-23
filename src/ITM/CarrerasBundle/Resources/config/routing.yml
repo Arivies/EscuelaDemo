@@ -9,3 +9,7 @@ _carreras:
 carreras_show:
     pattern:  /carreras/show/{id}
     defaults: { _controller: CarrerasBundle:Carreras:show }
+
+carreras_nuevo:
+    pattern:  /carreras/nuevo/
+    defaults: { _controller: CarrerasBundle:Carreras:nuevo }
