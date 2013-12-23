@@ -1,0 +1,12 @@
+{% extends '::front.html.twig' %}
+
+{% block content %}
+<div class="row">
+    <div class="large-5 large-centered columns">
+		<form action="{{ path('alumnos_nuevo') }}" method="post" {{ form_enctype(formulario) }} >
+			{{ form_widget(formulario) }}
+			<input type="submit" value="GUARDAR" >
+		</form>
+	</div>
+</div>
+{% endblock %}
