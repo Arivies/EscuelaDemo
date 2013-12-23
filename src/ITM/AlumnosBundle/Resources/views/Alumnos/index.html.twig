@@ -1,32 +1,33 @@
 {% extends '::front.html.twig' %}
 
+{% block options %}
+    <ul class="side-nav">
+        <li><a href="{{ path('alumnos_nuevo') }}">Nuevo alumno</a></li>
+    </ul>
+{% endblock %}
+
 {% block content %}
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>NO. CONTROL</th>
-            <th>NOMBRE</th>
-            <th>APELLIDOS</th>
-            <th>CARRERA</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for entity in entities %}
-        <tr>
-            <td><a href="{{ path('alumnos_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.nocontrol }}</td>
-            <td>{{ entity.nombre }}</td>
-            <td>{{ entity.apellidopaterno ~ " " ~ entity.apellidomaterno }}</td>
-            <td>{{ entity.carrera }}</td>
-            <td>
-                <a href="{{ path('alumnos_show', { 'id': entity.id }) }}">show</a>
-                <a href="#">eliminar</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-{{ knp_pagination_render(entities) }}
+<div class="row">
+    <section class="large-10 large-push-2 columns">
+        <table>
+            <thead>
+                <tr>
+                    <th width="120">NO. CONTROL</th>
+                    <th width="270">NOMBRE</th>
+                    <th width="200">CARRERA</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entity in entities %}
+                <tr>
+                    <td class="enlace"><a href="{{ path('alumnos_show', { 'id': entity.id }) }}">{{ entity.nocontrol }}</a></td>
+                    <td class="enlace"><a href="{{ path('alumnos_show', { 'id': entity.id }) }}">{{ entity.apellidopaterno ~ " " ~ entity.apellidomaterno ~ " " ~ entity.nombre }}</a></td>
+                    <td class="enlace"><a href="{{ path('alumnos_show', { 'id': entity.id }) }}">{{ entity.carrera }}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {{ knp_pagination_render(entities) }}
+    </section>  
+</div>
 {% endblock %}
