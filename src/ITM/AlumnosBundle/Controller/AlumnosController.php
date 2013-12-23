@@ -2,12 +2,12 @@
 
 namespace ITM\AlumnosBundle\Controller;
 
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use ITM\AlumnosBundle\Entity\Alumnos;
+use ITM\AlumnosBundle\Form\AlumnosType;
 
 /**
  * Alumnos controller.
@@ -17,6 +17,10 @@ use ITM\AlumnosBundle\Entity\Alumnos;
 class AlumnosController extends Controller
 {
 
+    public function portadaAction()
+    {
+        return $this->render('AlumnosBundle:Alumnos:portada.html.twig');
+    }
     /**
      * Lists all Alumnos entities.
      *
@@ -53,8 +57,29 @@ class AlumnosController extends Controller
             throw $this->createNotFoundException('Unable to find Alumnos entity.');
         }
 
-        return array(
-            'entity'      => $entity,
+        return array('entity' => $entity);
+    }
+
+    public function nuevoAction()
+    {
+        $peticion = $this->getRequest();
+
+        $alumno = new Alumnos();
+        $formulario = $this->createForm(new AlumnosType(), $alumno);
+
+        if ($peticion->getMethod() == 'POST'){
+            $formulario->bind($peticion);
+
+            if($formulario->isValid()){
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($alumno);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('alumnos'));
+            }
+        }
+        
+        return $this->render('AlumnosBundle:Alumnos:nuevo.html.twig', array('formulario' => $formulario->createView())
         );
     }
 }
