@@ -3,7 +3,7 @@
 {% block content %}
 <div class="row">
     <div class="large-5 large-centered columns">
-		<form action="{{ path('alumnos_nuevo') }}" method="post" {{ form_enctype(formulario) }} >
+    	{{ form_start(formulario) }}
 			{{ form_label(formulario.nocontrol, "No. de control") }}
 			{{ form_widget(formulario.nocontrol) }}
 			{{ form_label(formulario.nombre) }}
@@ -15,7 +15,7 @@
 			{{ form_label(formulario.carrera) }}
 			{{ form_widget(formulario.carrera) }}
 			<input type="submit" value="GUARDAR" >
-		</form>
+		{{ form_end(formulario) }}
 	</div>
 </div>
 {% endblock %}
