@@ -2,7 +2,6 @@
 
 namespace ITM\CarrerasBundle\Controller;
 
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -55,7 +54,7 @@ class CarrerasController extends Controller
         }
 
         return array(
-            'entity'      => $entity,
+            'entity' => $entity,
         );
     }
 
@@ -64,18 +63,19 @@ class CarrerasController extends Controller
         $peticion = $this->getRequest();
 
         $carrera = new Carreras();
-        $formulario = $this->createForm(new CarrerasType(), $carrera);
+        $formulario = $this->createForm(new CarrerasType(), $carrera, array(
+            'action' => $this->generateUrl('carreras_nuevo'),
+            'method' => 'POST',
+        ));
 
-        if ($peticion->getMethod() == 'POST'){
-            $formulario->bind($peticion);
+        $formulario->handleRequest($peticion);
 
-            if($formulario->isValid()){
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($carrera);
-                $em->flush();
+        if($formulario->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($carrera);
+            $em->flush();
 
-                return $this->redirect($this->generateUrl('carreras'));
-            }
+            return $this->redirect($this->generateUrl('carreras'));
         }
         
         return $this->render('CarrerasBundle:Carreras:nuevo.html.twig', array('formulario' => $formulario->createView())

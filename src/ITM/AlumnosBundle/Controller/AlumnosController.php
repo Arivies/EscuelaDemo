@@ -62,23 +62,11 @@ class AlumnosController extends Controller
 
     public function nuevoAction()
     {
-        $alumno = new Alumnos();
-        $formulario = $this->createForm(new AlumnosType(), $alumno, array(
-            'action' => $this->generateUrl('alumnos_registro'),
-            'method' => 'POST',
-        ));
-        
-        return $this->render('AlumnosBundle:Alumnos:nuevo.html.twig', array('formulario' => $formulario->createView())
-        );
-    }
-
-    public function registroAction()
-    {
         $peticion = $this->getRequest();
 
         $alumno = new Alumnos();
         $formulario = $this->createForm(new AlumnosType(), $alumno, array(
-            'action' => $this->generateUrl('alumnos_registro'),
+            'action' => $this->generateUrl('alumnos_nuevo'),
             'method' => 'POST',
         ));
         $formulario->handleRequest($peticion);

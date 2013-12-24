@@ -17,7 +17,3 @@ alumnos_show:
 alumnos_nuevo:
     pattern:  /alumnos/nuevo/
     defaults: { _controller: AlumnosBundle:Alumnos:nuevo }
-
-alumnos_registro:
-    pattern:  /alumnos/registro/
-    defaults: { _controller: AlumnosBundle:Alumnos:registro }
