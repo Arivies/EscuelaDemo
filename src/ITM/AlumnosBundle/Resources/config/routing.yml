@@ -17,3 +17,11 @@ alumnos_show:
 alumnos_nuevo:
     pattern:  /alumnos/nuevo/
     defaults: { _controller: AlumnosBundle:Alumnos:nuevo }
+
+alumnos_actualizar:
+    pattern:  /alumnos/actualizar/{id}
+    defaults: { _controller: AlumnosBundle:Alumnos:actualizar }
+
+alumnos_eliminar:
+    pattern:  /alumnos/eliminar/{id}
+    defaults: { _controller: AlumnosBundle:Alumnos:eliminar }

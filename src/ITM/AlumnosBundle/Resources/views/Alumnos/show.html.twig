@@ -1,5 +1,12 @@
 {% extends '::front.html.twig' %}
 
+{% block options %}
+    <ul class="side-nav">
+        <li><a href="{{ path('alumnos_actualizar', { 'id': entity.id }) }}">Actualizar datos</a></li>
+        <li><a href="{{ path('alumnos_eliminar', { 'id': entity.id }) }}">Eliminar alumno</a></li>
+    </ul>
+{% endblock %}
+
 {% block content %}
 <div class="row">
     <section class="large-12 columns">
@@ -15,6 +22,7 @@
                 <tr>
                     <td>{{ entity.nocontrol }}</td>
                     <td>{{ entity.apellidopaterno ~ " " ~ entity.apellidomaterno ~ " " ~ entity.nombre }}</td>
+                    <td>{{ entity.carrera|upper }}</td>
                 </tr>
             </tbody>
         </table>

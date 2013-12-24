@@ -51,13 +51,13 @@ class AlumnosController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('AlumnosBundle:Alumnos')->find($id);
+        $entity = $em->getRepository('AlumnosBundle:Alumnos')->findAlumno($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Alumnos entity.');
         }
 
-        return array('entity' => $entity);
+         return $this->render('AlumnosBundle:Alumnos:show.html.twig', array('entity' => $entity));
     }
 
     public function nuevoAction()
@@ -81,5 +81,23 @@ class AlumnosController extends Controller
         
         return $this->render('AlumnosBundle:Alumnos:nuevo.html.twig', array('formulario' => $formulario->createView())
         );
+    }
+
+    public function eliminarAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('AlumnosBundle:Alumnos')->eliminarAlumno($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Alumnos entity.');
+        }
+
+        $entities = $em->getRepository('AlumnosBundle:Alumnos')->findAlumnos();
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($entities, $this->get('request')->query->get('page',1), 5);
+
+        return $this->redirect($this->generateUrl('alumnos'));
     }
 }
