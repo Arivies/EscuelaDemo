@@ -3,7 +3,7 @@
 {% block content %}
 <div class="row">
     <div class="large-5 large-centered columns">
-    	{{ form_start(formulario, {'action': path('alumnos_actualizar'), 'method': 'PUT'}) }} 
+    	{{ form_start(formulario) }} 
 			{{ form_label(formulario.nocontrol, "No. de control") }}
 			{{ form_widget(formulario.nocontrol) }}
 			{{ form_label(formulario.nombre) }}
