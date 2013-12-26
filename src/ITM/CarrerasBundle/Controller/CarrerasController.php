@@ -36,39 +36,12 @@ class CarrerasController extends Controller
         return $this->render('CarrerasBundle:Carreras:index.html.twig', array('entities' => $pagination));
     }
 
-    /**
-     * Finds and displays a Carreras entity.
-     *
-     * @Route("/{id}", name="carreras_show")
-     * @Method("GET")
-     * @Template()
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('CarrerasBundle:Carreras')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Carreras entity.');
-        }
-
-        return array(
-            'entity' => $entity,
-        );
-    }
-
     public function nuevoAction()
     {
-        $peticion = $this->getRequest();
-
         $carrera = new Carreras();
-        $formulario = $this->createForm(new CarrerasType(), $carrera, array(
-            'action' => $this->generateUrl('carreras_nuevo'),
-            'method' => 'POST',
-        ));
+        $formulario = $this->createForm(new CarrerasType(), $carrera);
 
-        $formulario->handleRequest($peticion);
+        $formulario->handleRequest($this->getRequest());
 
         if($formulario->isValid()){
             $em = $this->getDoctrine()->getManager();
