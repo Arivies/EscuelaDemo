@@ -3,11 +3,11 @@
 {% block content %}
 <div class="row">
     <div class="large-5 large-centered columns">
-		{{ form_start(formulario) }}
+   		{{ form_start(formulario, {'action': path('carreras_nuevo'), 'method': 'POST'}) }}
 			{{ form_label(formulario.nombre) }}
 			{{ form_widget(formulario.nombre) }}
 			<input type="submit" value="GUARDAR" >
-		{{ form_end(formulario) }}
+		{{ form_end(formulario) }}	
 	</div>
 </div>
 {% endblock %}
