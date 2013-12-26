@@ -62,14 +62,9 @@ class AlumnosController extends Controller
 
     public function nuevoAction()
     {
-        $peticion = $this->getRequest();
-
         $alumno = new Alumnos();
-        $formulario = $this->createForm(new AlumnosType(), $alumno, array(
-            'action' => $this->generateUrl('alumnos_nuevo'),
-            'method' => 'POST',
-        ));
-        $formulario->handleRequest($peticion);
+        $formulario = $this->createForm(new AlumnosType(), $alumno);
+        $formulario->handleRequest($this->getRequest());
 
         if($formulario->isValid()){
             $em = $this->getDoctrine()->getManager();
@@ -93,11 +88,33 @@ class AlumnosController extends Controller
             throw $this->createNotFoundException('Unable to find Alumnos entity.');
         }
 
-        $entities = $em->getRepository('AlumnosBundle:Alumnos')->findAlumnos();
-
-        $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate($entities, $this->get('request')->query->get('page',1), 5);
-
         return $this->redirect($this->generateUrl('alumnos'));
+    }
+
+    public function actualizarAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $alumno = $em->getRepository('AlumnosBundle:Alumnos')->findOneById($id);
+
+        if (!$alumno) {
+            throw $this->createNotFoundException('Unable to find Alumnos entity.');
+        }
+
+        $formulario = $this->createForm(new AlumnosType(), $alumno, array(
+            'action' => $this->generateUrl('alumnos_actualizar', array('id' => $alumno->getId())),
+            'method' => 'PUT',
+        ));
+
+        $formulario->handleRequest($this->getRequest());
+
+        if($formulario->isValid()){
+            $em->flush();            
+
+            return $this->redirect($this->generateUrl('alumnos'));
+        }
+
+        return $this->render('AlumnosBundle:Alumnos:actualizar.html.twig', array('formulario' => $formulario->createView()
+        ));
+
     }
 }
