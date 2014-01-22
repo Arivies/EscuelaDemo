@@ -8,13 +8,14 @@
 
 {% block content %}
 <div class="row">
-    <section class="large-10 large-push-2 columns">
+    <section class="large-11 large-push-1 columns">
         <table>
             <thead>
                 <tr>
-                    <th width="150">NO. CONTROL</th>
-                    <th width="220">NOMBRE</th>
-                    <th width="220">APELLIDOS</th>
+                    <th width="120">NO. CONTROL</th>
+                    <th width="120">NOMBRE</th>
+                    <th width="200">APELLIDOS</th>
+                    <th width="280">CARRERA</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,6 +24,7 @@
                     <td class="enlace"><a href="{{ path('alumnos_show', { 'id': entity.id }) }}">{{ entity.nocontrol }}</a></td>
                     <td class="enlace"><a href="{{ path('alumnos_show', { 'id': entity.id }) }}">{{ entity.nombre }}</a></td>
                     <td class="enlace"><a href="{{ path('alumnos_show', { 'id': entity.id }) }}">{{ entity.apellidopaterno ~ " " ~ entity.apellidomaterno }}</a></td>
+                    <td class="enlace"><a href="{{ path('alumnos_show', { 'id': entity.id }) }}">{{ entity.carrera|upper }}</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
